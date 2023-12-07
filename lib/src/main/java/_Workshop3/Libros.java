@@ -281,6 +281,20 @@ public class Libros {
 
         System.out.println("Total late fees accrued for returned books: $" + totalLateFees);
     }
+    
+    public static boolean userConfirmation2(String input) {
+        return input.equalsIgnoreCase("Y");
+    }
+
+    public static boolean performCheckout2(int numberOfBooks) {
+        if (numberOfBooks > 10 || numberOfBooks <= 0) {
+            System.out.println("Invalid quantity! Please enter a number between 1 and 10.");
+            return true; 
+        }
+
+
+        return false; 
+    }
 
 
 }
