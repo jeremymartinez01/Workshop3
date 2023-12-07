@@ -32,22 +32,6 @@ class TBooks {
     }
 
     @Test
-    void calculateLateFeesForReturnedBooks_Overdue_ReturnsLateFee() {
-        HashMap<Book, Integer> returnedBooks = new HashMap<>();
-        LocalDate borrowingDate = LocalDate.now().minusDays(20); // Overdue by 6 days
-        Book book = new Book("Book 1", "Author A", 5);
-        returnedBooks.put(book, 2);
-
-        double expectedLateFee = calculateExpectedLateFee(borrowingDate, LocalDate.now());
-        Libros.calculateLateFeesForReturnedBooks(returnedBooks);
-
-        assertEquals(expectedLateFee, calculateExpectedLateFee(borrowingDate, LocalDate.now()), 0.01);
-    }
-    private double calculateExpectedLateFee(LocalDate borrowingDate, LocalDate currentDate) {
-        long daysOverdue = Math.max(0, ChronoUnit.DAYS.between(borrowingDate, currentDate) - 14);
-        return daysOverdue * 2.0; // Assuming $2 late fee per day per copy
-    }
-    @Test
     void validateBookQuantity_ValidQuantity_ReturnsTrue() {
         int availableCopies = 5;
         int quantity = 3;
